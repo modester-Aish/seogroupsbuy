@@ -8,7 +8,7 @@ import { useRef } from 'react'
 const plans = [
   {
     name: 'Basic',
-    price: '$29',
+    price: '$10',
     period: '/month',
     description: 'Perfect for individuals and small projects',
     icon: Zap,
@@ -28,7 +28,7 @@ const plans = [
   },
   {
     name: 'Standard',
-    price: '$49',
+    price: '$30',
     period: '/month',
     description: 'Most popular for growing businesses',
     icon: Star,
@@ -51,7 +51,7 @@ const plans = [
   },
   {
     name: 'Premium',
-    price: '$79',
+    price: '$50',
     period: '/month',
     description: 'For agencies and large teams',
     icon: Crown,

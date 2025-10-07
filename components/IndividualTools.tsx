@@ -48,12 +48,26 @@ const getLogoUrl = (toolName: string) => {
   return logoMap[toolName] || toolName.toLowerCase().replace(/[^a-z0-9]/g, '') + '.com';
 };
 
+// Helper function to calculate pricing for different durations
+const getDefaultPricing = (monthlyPrice: number) => ({
+  '1': monthlyPrice,
+  '3': Math.round(monthlyPrice * 2.8 * 100) / 100,  // ~7% discount
+  '6': Math.round(monthlyPrice * 5.4 * 100) / 100,  // ~10% discount  
+  '12': Math.round(monthlyPrice * 10.4 * 100) / 100  // ~13% discount
+});
+
 const individualTools = [
   {
     name: 'AHREF$',
     logo: 'Ahrefs',
     logoColor: 'text-orange-500',
     price: '$30',
+    pricing: {
+      '1': 30,
+      '3': 85,
+      '6': 165,
+      '12': 320
+    },
     icon: '🔍'
   },
   {
@@ -61,6 +75,12 @@ const individualTools = [
     logo: 'SEMrush',
     logoColor: 'text-purple-600',
     price: '$4.99',
+    pricing: {
+      '1': 4.99,
+      '3': 14,
+      '6': 27,
+      '12': 52
+    },
     icon: '📊'
   },
   {
@@ -68,6 +88,12 @@ const individualTools = [
     logo: 'MOZ',
     logoColor: 'text-teal-500',
     price: '$4.99',
+    pricing: {
+      '1': 4.99,
+      '3': 14,
+      '6': 27,
+      '12': 52
+    },
     icon: '🔗'
   },
   {
@@ -75,6 +101,12 @@ const individualTools = [
     logo: 'Canva',
     logoColor: 'text-blue-600',
     price: '$4.99',
+    pricing: {
+      '1': 4.99,
+      '3': 14,
+      '6': 27,
+      '12': 52
+    },
     icon: '🎨'
   },
   {
@@ -82,6 +114,12 @@ const individualTools = [
     logo: 'ChatGPT Plus',
     logoColor: 'text-green-600',
     price: '$4.99',
+    pricing: {
+      '1': 4.99,
+      '3': 14,
+      '6': 27,
+      '12': 52
+    },
     icon: '🤖'
   },
   {
@@ -89,6 +127,12 @@ const individualTools = [
     logo: 'RunwayML',
     logoColor: 'text-blue-600',
     price: '$4.99',
+    pricing: {
+      '1': 4.99,
+      '3': 14,
+      '6': 27,
+      '12': 52
+    },
     icon: '🎬'
   },
   {
@@ -96,6 +140,12 @@ const individualTools = [
     logo: 'Netflix',
     logoColor: 'text-red-600',
     price: '$4.99',
+    pricing: {
+      '1': 4.99,
+      '3': 14,
+      '6': 27,
+      '12': 52
+    },
     icon: '📺'
   },
   {
@@ -103,6 +153,7 @@ const individualTools = [
     logo: 'Claude',
     logoColor: 'text-orange-500',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: '🧠'
   },
   {
@@ -110,6 +161,7 @@ const individualTools = [
     logo: 'envato',
     logoColor: 'text-green-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: '⚡'
   },
   {
@@ -117,6 +169,7 @@ const individualTools = [
     logo: 'Storyblocks',
     logoColor: 'text-black',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: '$'
   },
   {
@@ -124,6 +177,7 @@ const individualTools = [
     logo: 'Canva',
     logoColor: 'text-transparent bg-gradient-to-r from-blue-500 via-green-500 to-purple-500 bg-clip-text',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: ''
   },
   {
@@ -131,6 +185,7 @@ const individualTools = [
     logo: 'SEMRUSH',
     logoColor: 'text-black',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: '🔥'
   },
   {
@@ -138,6 +193,7 @@ const individualTools = [
     logo: 'MOZ',
     logoColor: 'text-blue-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: ''
   },
   {
@@ -145,6 +201,7 @@ const individualTools = [
     logo: 'brandoverflow',
     logoColor: 'text-blue-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: ''
   },
   {
@@ -152,6 +209,7 @@ const individualTools = [
     logo: 'SEO TESTER ONLINE',
     logoColor: 'text-blue-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: '→'
   },
   {
@@ -159,6 +217,7 @@ const individualTools = [
     logo: 'Mangools',
     logoColor: 'text-black',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: '●'
   },
   {
@@ -166,6 +225,7 @@ const individualTools = [
     logo: 'udemy',
     logoColor: 'text-black',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: '↑'
   },
   {
@@ -173,6 +233,7 @@ const individualTools = [
     logo: 'coursera',
     logoColor: 'text-blue-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: ''
   },
   {
@@ -180,6 +241,7 @@ const individualTools = [
     logo: 'Linked in LEARNING',
     logoColor: 'text-blue-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: 'in'
   },
   {
@@ -187,6 +249,7 @@ const individualTools = [
     logo: 'SKILL share.',
     logoColor: 'text-black',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: '●'
   },
   {
@@ -194,6 +257,7 @@ const individualTools = [
     logo: 'Prezi',
     logoColor: 'text-blue-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: '○'
   },
   {
@@ -201,6 +265,7 @@ const individualTools = [
     logo: 'vistacreate',
     logoColor: 'text-black',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: '▲'
   },
   {
@@ -208,6 +273,7 @@ const individualTools = [
     logo: 'Vecteezy',
     logoColor: 'text-orange-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: 'V'
   },
   {
@@ -215,6 +281,7 @@ const individualTools = [
     logo: 'dream',
     logoColor: 'text-blue-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: '⭐'
   },
   {
@@ -222,6 +289,7 @@ const individualTools = [
     logo: 'DESIGNS.AI',
     logoColor: 'text-gray-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: 'N'
   },
   {
@@ -229,6 +297,7 @@ const individualTools = [
     logo: 'Creatopy',
     logoColor: 'text-gray-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: 'C'
   },
   {
@@ -236,6 +305,7 @@ const individualTools = [
     logo: 'Snapied',
     logoColor: 'text-pink-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: '◆'
   },
   {
@@ -243,6 +313,7 @@ const individualTools = [
     logo: 'PicMonkey',
     logoColor: 'text-orange-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: '🐵'
   },
   {
@@ -250,6 +321,7 @@ const individualTools = [
     logo: 'Katalist',
     logoColor: 'text-pink-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: 'K'
   },
   {
@@ -257,6 +329,7 @@ const individualTools = [
     logo: 'Slidebean',
     logoColor: 'text-pink-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: 'S'
   },
   {
@@ -264,6 +337,7 @@ const individualTools = [
     logo: 'LOVO',
     logoColor: 'text-blue-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: '█'
   },
   {
@@ -271,6 +345,7 @@ const individualTools = [
     logo: 'Motion Array',
     logoColor: 'text-blue-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: ''
   },
   {
@@ -278,6 +353,7 @@ const individualTools = [
     logo: 'Writesonic',
     logoColor: 'text-blue-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: 'ws'
   },
   {
@@ -285,6 +361,7 @@ const individualTools = [
     logo: 'grammarly',
     logoColor: 'text-green-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: 'G'
   },
   {
@@ -292,6 +369,7 @@ const individualTools = [
     logo: 'CLOSERS COPY',
     logoColor: 'text-black',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: '✒'
   },
   {
@@ -299,6 +377,7 @@ const individualTools = [
     logo: 'HyperWrite',
     logoColor: 'text-teal-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: 'H'
   },
   {
@@ -306,6 +385,7 @@ const individualTools = [
     logo: 'INK_',
     logoColor: 'text-pink-600',
     price: '$4.99',
+    pricing: getDefaultPricing(4.99),
     icon: ''
   },
 ]
@@ -355,7 +435,7 @@ export default function IndividualTools() {
   const displayedTools = showAll ? individualTools : individualTools.slice(0, 16)
 
   return (
-    <section className="py-20 bg-white relative overflow-hidden">
+    <section id="tools" className="py-20 bg-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-10 right-10 w-64 h-64 bg-accent-100/20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 left-10 w-80 h-80 bg-primary-100/20 rounded-full blur-3xl"></div>
@@ -429,7 +509,16 @@ export default function IndividualTools() {
                 <div className="bg-white px-4 py-3 flex items-center justify-center">
                   <div className="relative w-full">
                     <select className="w-full bg-white border-2 border-accent-400 rounded px-3 py-2 text-center font-medium text-text-600 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent-400">
-                      <option value={tool.price}>{tool.price}</option>
+                      {tool.pricing ? (
+                        <>
+                          <option value="1">${tool.pricing['1']} / 1 Month</option>
+                          <option value="3">${tool.pricing['3']} / 3 Months</option>
+                          <option value="6">${tool.pricing['6']} / 6 Months</option>
+                          <option value="12">${tool.pricing['12']} / 12 Months</option>
+                        </>
+                      ) : (
+                        <option value={tool.price}>{tool.price}</option>
+                      )}
                     </select>
                     <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                       <svg className="w-4 h-4 text-text-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
