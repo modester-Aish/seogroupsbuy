@@ -89,13 +89,13 @@ export default function Navbar() {
                 Home
               </a>
               <a
-                href="#pricing"
+                href="/#pricing"
                 className="text-text-600 hover:text-primary-500 px-3 py-2 text-sm font-medium transition-colors duration-200"
               >
                 Pricing
               </a>
               <a
-                href="#tools"
+                href="/tools"
                 className="text-text-600 hover:text-primary-500 px-3 py-2 text-sm font-medium transition-colors duration-200"
               >
                 Tools
@@ -107,12 +107,8 @@ export default function Navbar() {
                 FAQ
               </a>
               <a
-                href="#contact"
+                href="/#contact"
                 className="text-text-600 hover:text-primary-500 px-3 py-2 text-sm font-medium transition-colors duration-200"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                }}
               >
                 Contact
               </a>
@@ -121,9 +117,9 @@ export default function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <button className="btn-primary">
+            <a href="https://members.seotoolsgroupbuy.us/signup" target="_blank" rel="noopener noreferrer" className="btn-primary">
               Get Started
-            </button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -153,14 +149,14 @@ export default function Navbar() {
                 Home
               </a>
               <a
-                href="#pricing"
+                href="/#pricing"
                 className="text-text-600 hover:text-primary-500 block px-3 py-2 text-base font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Pricing
               </a>
               <a
-                href="#tools"
+                href="/tools"
                 className="text-text-600 hover:text-primary-500 block px-3 py-2 text-base font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -174,20 +170,16 @@ export default function Navbar() {
                 FAQ
               </a>
               <a
-                href="#contact"
+                href="/#contact"
                 className="text-text-600 hover:text-primary-500 block px-3 py-2 text-base font-medium"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsMenuOpen(false);
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={() => setIsMenuOpen(false)}
               >
                 Contact
               </a>
               <div className="pt-4">
-                <button className="btn-primary w-full">
+                <a href="https://members.seotoolsgroupbuy.us/signup" target="_blank" rel="noopener noreferrer" className="btn-primary w-full block text-center">
                   Get Started
-                </button>
+                </a>
               </div>
             </div>
           </div>

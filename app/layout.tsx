@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import Navbar from '@/components/Navbar'
 
 export const metadata: Metadata = {
   title: 'SEOGroupBuyTools - Premium SEO Tools at the Lowest Price',
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-inter">
+        <Navbar />
         {children}
       </body>
     </html>

@@ -1,78 +1,92 @@
 'use client'
 
-import { Check, Star, Zap, Crown } from 'lucide-react'
+import { Star, Zap, Crown, Info } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 
 const plans = [
   {
-    name: 'Basic',
-    price: '$10',
+    name: 'SMALL PLAN',
+    price: '$15',
     period: '/month',
-    description: 'Perfect for individuals and small projects',
-    icon: Zap,
-    color: 'from-gray-500 to-gray-600',
+    description: 'Perfect for small businesses and startups',
+    icon: Star,
+    color: 'text-blue-600',
     features: [
-      'Canva Pro',
-      'Netflix',
-      'Grammarly',
-      'ChatGPT Plus',
-      'Claude',
-      'Envato',
-      'Storyblocks',
-      'Udemy',
-      '5+ More Tools'
+      'Access to essential tools',
+      'Basic features included',
+      'Great for getting started'
     ],
     popular: false
   },
   {
-    name: 'Standard',
+    name: 'AHREF$ COMBO',
     price: '$30',
     period: '/month',
-    description: 'Most popular for growing businesses',
-    icon: Star,
-    color: 'from-primary-500 to-primary-600',
+    description: 'Complete SEO toolkit with Ahrefs integration',
+    icon: Zap,
+    color: 'text-orange-500',
     features: [
-      'SEMRU$H',
-      'Moz Pro',
-      'Canva Pro',
-      'ChatGPT Plus',
-      'RunwayML',
-      'Netflix',
-      'Claude',
-      'Envato',
-      'Storyblocks',
-      'Udemy',
-      'Coursera',
-      '10+ More Tools'
+      'Full Ahrefs access',
+      'Advanced SEO tools',
+      'Keyword research & backlink analysis'
     ],
     popular: true
   },
   {
-    name: 'Premium',
+    name: 'MEGA PLAN',
     price: '$50',
     period: '/month',
-    description: 'For agencies and large teams',
+    description: 'Comprehensive solution for large operations',
     icon: Crown,
-    color: 'from-yellow-500 to-yellow-600',
+    color: 'text-purple-600',
     features: [
-      'AHREF$ ($30)',
-      'SEMRU$H',
-      'Moz Pro',
-      'ChatGPT Plus',
-      'Canva Pro',
-      'GRAAMMAARRLY',
-      'RunwayML',
-      'Claude',
-      'Envato',
-      'Storyblocks',
-      'Udemy',
-      'Coursera',
-      'LinkedIn Learning',
-      'SkillShare',
-      'VistaCreate',
-      '15+ More Tools'
+      'All premium tools included',
+      'Advanced analytics',
+      'Priority support'
+    ],
+    popular: false
+  },
+  {
+    name: 'LITE PLAN',
+    price: '$10',
+    period: '/month',
+    description: 'Lightweight solution for basic needs',
+    icon: Star,
+    color: 'text-blue-600',
+    features: [
+      'Essential tools only',
+      'Basic features',
+      'Perfect for individuals'
+    ],
+    popular: false
+  },
+  {
+    name: 'WRITER PLAN',
+    price: '$15',
+    period: '/month',
+    description: 'Specialized tools for content creators',
+    icon: Zap,
+    color: 'text-orange-500',
+    features: [
+      'Writing and editing tools',
+      'Content optimization',
+      'Grammar and style checks'
+    ],
+    popular: false
+  },
+  {
+    name: 'DESIGNER PLAN',
+    price: '$10',
+    period: '/month',
+    description: 'Creative tools for designers and artists',
+    icon: Crown,
+    color: 'text-purple-600',
+    features: [
+      'Design software access',
+      'Creative assets',
+      'Collaboration tools'
     ],
     popular: false
   }
@@ -119,11 +133,9 @@ export default function Pricing() {
   }
 
   return (
-    <section id="pricing" className="py-20 bg-background-100 relative overflow-hidden">
+    <section id="pricing" className="py-20 bg-gray-50 relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background-100 via-background to-background-200"></div>
-      <div className="absolute top-10 left-10 w-80 h-80 bg-primary-100/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-secondary-100/20 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 bg-gray-50"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
@@ -135,16 +147,16 @@ export default function Pricing() {
           variants={containerVariants}
         >
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold text-text mb-4"
+            className="text-3xl md:text-4xl font-bold text-black mb-4"
             variants={itemVariants}
           >
-            Simple, Transparent Pricing
+            CUSTOMIZE YOUR TOOLKIT
           </motion.h2>
           <motion.p 
-            className="text-xl text-text-600 max-w-3xl mx-auto"
+            className="text-lg text-gray-600 max-w-3xl mx-auto"
             variants={itemVariants}
           >
-            Choose the plan that fits your needs. All plans include instant access and no hidden fees.
+            You can select any tools which you need and make a pack.
           </motion.p>
         </motion.div>
 
@@ -160,173 +172,94 @@ export default function Pricing() {
             return (
               <motion.div
                 key={plan.name}
-                className={`card p-8 relative flex flex-col ${
-                  plan.popular 
-                    ? 'ring-2 ring-primary-500' 
-                    : ''
+                className={`relative p-8 h-full flex flex-col bg-white rounded-2xl border-4 border-black shadow-lg ${
+                  index === 0 ? 'transform -rotate-0.5 translate-y-4' : 
+                  index === 1 ? 'transform -translate-y-2' :
+                  index === 2 ? 'transform rotate-0.5 translate-y-4' : 
+                  ''
                 }`}
                 variants={cardVariants}
                 whileHover={{ 
-                  y: plan.popular ? -5 : -10, 
-                  scale: plan.popular ? 1.02 : 1.05,
-                  boxShadow: "0 25px 50px rgba(0, 0, 0, 0.15)"
+                  y: -5, 
+                  scale: 1.02,
+                  shadow: "0 25px 50px rgba(0, 0, 0, 0.15)"
                 }}
                 whileTap={{ scale: 0.98 }}
               >
                 {/* Popular Badge */}
                 {plan.popular && (
                   <motion.div 
-                    className="absolute -top-4 left-1/2 transform -translate-x-1/2"
+                    className="absolute -top-3 -right-3 bg-yellow-400 text-black font-bold px-4 py-2 rounded-lg rotate-12 text-sm border-2 border-black"
                     initial={{ opacity: 0, y: -10 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
                     transition={{ delay: 0.6 + index * 0.2, duration: 0.5 }}
                   >
-                    <motion.span 
-                      className="bg-primary-500 text-white px-4 py-1 rounded-full text-sm font-medium"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      Most Popular
-                    </motion.span>
+                    Popular!
                   </motion.div>
                 )}
 
                 {/* Plan Header */}
-                <div className="text-center mb-8">
-                  <motion.div 
-                    className={`w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-r ${plan.color} flex items-center justify-center`}
-                    whileHover={{ 
-                      scale: 1.1,
-                      rotate: [0, -5, 5, 0],
-                      transition: { duration: 0.3 }
-                    }}
-                  >
-                    <IconComponent className="h-8 w-8 text-white" />
-                  </motion.div>
-                  <h3 className="text-2xl font-bold text-text mb-2">
+                <div className="mb-6 text-center">
+                  <div className="w-16 h-16 rounded-full mb-6 flex items-center justify-center border-2 border-black mx-auto">
+                    <IconComponent className={`w-8 h-8 ${plan.color} stroke-2`} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-black leading-snug mb-2">
                     {plan.name}
                   </h3>
-                  <p className="text-text-600 mb-4">
+                  <p className="text-base text-gray-600 leading-relaxed font-medium">
                     {plan.description}
                   </p>
                 </div>
 
-                {/* Features */}
-                <div className="flex-1 mb-8">
-                  <ul className="space-y-3">
-                    {plan.features.map((feature, featureIndex) => (
-                      <motion.li 
-                        key={featureIndex} 
-                        className="flex items-start"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                        transition={{ delay: 0.8 + index * 0.2 + featureIndex * 0.05, duration: 0.3 }}
-                        whileHover={{ x: 5, scale: 1.02 }}
-                      >
-                        <motion.div
-                          whileHover={{ scale: 1.2, rotate: 360 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <Check className="h-4 w-4 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                        </motion.div>
-                        <span className="text-text-600 text-sm">
-                          {feature}
-                        </span>
-                      </motion.li>
-                    ))}
-                  </ul>
+                {/* Pricing */}
+                <div className="mb-6 text-center">
+                  <span className="text-4xl font-bold text-black">
+                    {plan.price}
+                  </span>
+                  <span className="text-lg text-gray-600 font-medium">
+                    {plan.period}
+                  </span>
                 </div>
 
-                {/* Pricing */}
-                <div className="text-center mb-6 mt-auto">
-                  <motion.div 
-                    className="flex items-baseline justify-center"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <span className="text-4xl font-bold text-text">
-                      {plan.price}
-                    </span>
-                    <span className="text-text-600 ml-1">
-                      {plan.period}
-                    </span>
-                  </motion.div>
+                {/* Features */}
+                <div className="mb-8 flex-grow">
+                  <div className="space-y-3">
+                    {plan.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-start gap-3">
+                        <span className="text-orange-500 font-bold text-lg leading-none mt-0.5">•</span>
+                        <span className="text-sm text-gray-700 leading-relaxed font-medium">
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 {/* CTA Button */}
-                <motion.button 
-                  className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 ripple ${
-                    plan.popular
-                      ? 'bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white'
-                      : 'bg-background-200 hover:bg-background-300 text-text'
-                  }`}
-                  whileHover={{ 
-                    scale: 1.05, 
-                    boxShadow: plan.popular 
-                      ? "0 20px 40px rgba(59, 130, 246, 0.3)" 
-                      : "0 20px 40px rgba(0, 0, 0, 0.1)"
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {plan.popular ? 'Get Started' : 'Choose Plan'}
-                </motion.button>
+                <div className="mt-auto">
+                  <motion.a 
+                    href="https://members.seotoolsgroupbuy.us/signup"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-full h-12 font-bold text-base rounded-lg transition-all duration-300 flex items-center justify-center ${
+                      plan.popular
+                        ? 'bg-yellow-400 text-black hover:bg-yellow-300 border-2 border-black'
+                        : 'bg-white text-black hover:bg-gray-50 border-2 border-black'
+                    }`}
+                    whileHover={{ 
+                      scale: 1.05, 
+                      boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)"
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Order Now
+                  </motion.a>
+                </div>
               </motion.div>
             )
           })}
         </motion.div>
 
-        {/* Bottom Section */}
-        <motion.div 
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ delay: 1.0, duration: 0.6 }}
-        >
-          <motion.div 
-            className="card p-8 max-w-4xl mx-auto"
-            whileHover={{ y: -5, boxShadow: "0 25px 50px rgba(0, 0, 0, 0.15)" }}
-          >
-            <motion.h3 
-              className="text-2xl font-bold text-text mb-4"
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ delay: 1.2, duration: 0.6 }}
-            >
-              Save Even More with Annual Plans
-            </motion.h3>
-            <motion.p 
-              className="text-text-600 mb-6"
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ delay: 1.3, duration: 0.6 }}
-            >
-              Get 2 months free when you pay annually. That's up to $158 in savings!
-            </motion.p>
-            <motion.div 
-              className="flex flex-wrap justify-center gap-4 text-sm text-text-600"
-              variants={containerVariants}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-            >
-              {[
-                "2 months free", "Priority support", "Exclusive features", "30-day money back guarantee"
-              ].map((benefit, index) => (
-                <motion.div 
-                  key={benefit}
-                  className="flex items-center"
-                  variants={itemVariants}
-                  whileHover={{ x: 5, scale: 1.05 }}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.2, rotate: 360 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Check className="h-4 w-4 text-green-500 mr-2" />
-                  </motion.div>
-                  <span>{benefit}</span>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </motion.div>
       </div>
     </section>
   )

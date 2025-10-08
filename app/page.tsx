@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import MovingToolsCarousel from '../components/MovingToolsCarousel'
 import IndividualTools from '../components/IndividualTools'
@@ -12,7 +11,6 @@ import ChatWidget from '../components/ChatWidget'
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Navbar />
       <Hero />
       <IndividualTools />
       <MovingToolsCarousel />

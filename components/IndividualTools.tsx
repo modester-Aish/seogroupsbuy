@@ -467,9 +467,12 @@ export default function IndividualTools() {
         >
           {displayedTools.map((tool, index) => {
             return (
-              <motion.div
+              <motion.a
                 key={tool.name}
-                className="bg-white border-2 border-accent-400 rounded-lg overflow-hidden group cursor-pointer"
+                href="https://members.seotoolsgroupbuy.us/signup"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white border-2 border-accent-400 rounded-lg overflow-hidden group cursor-pointer block"
                 variants={cardVariants}
                 whileHover={{ 
                   y: -8, 
@@ -530,7 +533,7 @@ export default function IndividualTools() {
 
                 {/* Bottom Section - Buy Now Button */}
                 <div className="bg-white p-4">
-                  <motion.button 
+                  <motion.div
                     className="w-full bg-cta hover:bg-accent-500 text-white font-medium py-3 px-4 rounded flex items-center justify-center transition-colors duration-200"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -539,9 +542,9 @@ export default function IndividualTools() {
                       <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
                     </svg>
                     <span className="text-sm">Buy Now</span>
-                  </motion.button>
+                  </motion.div>
                 </div>
-              </motion.div>
+              </motion.a>
             )
           })}
         </motion.div>
@@ -554,14 +557,14 @@ export default function IndividualTools() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            <motion.button
-              onClick={() => setShowAll(!showAll)}
-              className="bg-gradient-to-r from-primary-500 to-accent-400 hover:from-primary-600 hover:to-accent-500 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 text-lg shadow-lg"
+            <motion.a
+              href="/tools"
+              className="inline-block bg-gradient-to-r from-primary-500 to-accent-400 hover:from-primary-600 hover:to-accent-500 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 text-lg shadow-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              {showAll ? 'Show Less' : 'See More Tools'}
-            </motion.button>
+              See More Tools
+            </motion.a>
           </motion.div>
         )}
       </div>
