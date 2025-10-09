@@ -467,19 +467,15 @@ export default function IndividualTools() {
         >
           {displayedTools.map((tool, index) => {
             return (
-              <motion.a
+              <motion.div
                 key={tool.name}
-                href="https://members.seotoolsgroupbuy.us/signup"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white border-2 border-accent-400 rounded-lg overflow-hidden group cursor-pointer block"
+                className="bg-white border-2 border-accent-400 rounded-lg overflow-hidden"
                 variants={cardVariants}
                 whileHover={{ 
                   y: -8, 
                   scale: 1.02,
                   boxShadow: "0 25px 50px rgba(0, 0, 0, 0.15)"
                 }}
-                whileTap={{ scale: 0.98 }}
               >
                 {/* Top Section - Logo and Name */}
                 <div className="bg-white p-4 relative h-24 flex items-center justify-center">
@@ -533,7 +529,10 @@ export default function IndividualTools() {
 
                 {/* Bottom Section - Buy Now Button */}
                 <div className="bg-white p-4">
-                  <motion.div
+                  <motion.a
+                    href="https://members.seotoolsgroupbuy.us/signup"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-full bg-cta hover:bg-accent-500 text-white font-medium py-3 px-4 rounded flex items-center justify-center transition-colors duration-200"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -542,9 +541,9 @@ export default function IndividualTools() {
                       <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
                     </svg>
                     <span className="text-sm">Buy Now</span>
-                  </motion.div>
+                  </motion.a>
                 </div>
-              </motion.a>
+              </motion.div>
             )
           })}
         </motion.div>
