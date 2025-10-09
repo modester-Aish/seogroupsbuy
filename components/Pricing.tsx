@@ -3,14 +3,14 @@
 import { Star, Zap, Crown, Info } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 const plans = [
   {
     name: 'SMALL PLAN',
     price: '$15',
     period: '/month',
-    description: 'Perfect for small businesses and startups',
+    description: '60+ Tools',
     icon: Star,
     color: 'text-blue-600',
     features: [
@@ -18,13 +18,28 @@ const plans = [
       'Basic features included',
       'Great for getting started'
     ],
+    tools: [
+      'SEMRUSH Guru', 'MOZ Pro', 'Majestic', 'Kwfinder', 'Keywordtool io',
+      'Ubersuggest', 'SerpState', 'Answer the public', 'Woorank', 'Spyfu',
+      'SEOptimer', 'ChatGPT 4', 'Grammarly', 'WordAi', 'Quillbot',
+      'Spin Rewriter', 'WordHero', 'WordTune', 'SmartCopy', 'CloserCopy',
+      'Copy ai', 'Copymatic ai', 'Jasper Ai', 'WriteSonic', 'Rytr me',
+      'Jenni ai', 'CANVA pro', 'Crello', 'Envato Elements', 'Leonardo.AI',
+      'Freepik', 'Vecteezy', 'StoryBlocks', 'Designs ai', 'PicsArt',
+      'Fotojet', 'IconScout', 'Renderforest', 'GPL Themes/Plugins', 'Netflix',
+      'Prime Video', 'Chaupal tv', 'Indexification', 'Ecomhunt', 'Salehoo',
+      'Sell the trend', 'Niche Scraper', 'Helium 10', 'Semscoop', 'Buzzsumo',
+      'Buzzstream', 'Picmonkey', 'Word Tracker', 'Epidemicsound', 'Slidebean',
+      'Motionarray', 'Prezi', 'Udemy', 'Skill Share', 'Turnitin',
+      'Linkedin Learning', 'Coursera', 'Scribd Premium'
+    ],
     popular: false
   },
   {
     name: 'AHREF$ COMBO',
     price: '$30',
     period: '/month',
-    description: 'Complete SEO toolkit with Ahrefs integration',
+    description: '60+ Tools',
     icon: Zap,
     color: 'text-orange-500',
     features: [
@@ -32,13 +47,28 @@ const plans = [
       'Advanced SEO tools',
       'Keyword research & backlink analysis'
     ],
+    tools: [
+      'AHREFS', 'SEMRUSH Guru', 'MOZ Pro', 'Majestic', 'Kwfinder',
+      'Keywordtool io', 'Ubersuggest', 'SerpState', 'Answer the public', 'Woorank',
+      'Spyfu', 'SEOptimer', 'ChatGPT 4', 'Bypass GPT', 'Grammarly',
+      'Quetext premium', 'WordAi', 'Hix ai', 'Quillbot', 'Spin Rewriter',
+      'WordHero', 'WordTune', 'SmartCopy', 'CloserCopy', 'Copymatic ai',
+      'Jasper Ai', 'WriteSonic', 'Rytr me', 'Jenni ai', 'CANVA pro',
+      'Crello', 'Envato Elements', 'Leonardo.AI', 'Freepik', 'Vecteezy',
+      'Designs ai', 'CAPCUT Pro', 'PicsArt', 'Fotojet', 'IconScout',
+      'Renderforest', 'Invideo io', 'GPL Themes/Plugins', 'Netflix', 'Prime Video',
+      'Chaupal tv', 'Indexification', 'Ecomhunt', 'Sell the trend', 'Niche Scraper',
+      'Helium 10', 'Semscoop', 'Buzzsumo', 'Picmonkey', 'Word Tracker',
+      'Epidemicsound', 'Slidebean', 'Motionarray', 'Prezi', 'Udemy',
+      'Skill Share', 'Turnitin', 'Coursera', 'Scribd Premium'
+    ],
     popular: true
   },
   {
     name: 'MEGA PLAN',
     price: '$50',
     period: '/month',
-    description: 'Comprehensive solution for large operations',
+    description: '80+ Tools',
     icon: Crown,
     color: 'text-purple-600',
     features: [
@@ -46,13 +76,31 @@ const plans = [
       'Advanced analytics',
       'Priority support'
     ],
+    tools: [
+      'AHREFS', 'SEMRUSH Guru', 'MOZ Pro', 'Majestic', 'Kwfinder',
+      'Keywordtool io', 'Ubersuggest', 'SerpState', 'Answer the public', 'Woorank',
+      'Spyfu', 'SEOptimer', 'SEOSITECHECKUP', 'ChatGPT 4', 'Bypass GPT',
+      'Grammarly', 'Quetext premium', 'WordAi', 'You Ai', 'Claude Ai',
+      'Hix Ai', 'Copy Ai', 'Jasper Ai', 'Copymatic Ai', 'Stealthwriter Ai',
+      'Jenni ai', 'Quillbot', 'Spin Rewriter', 'WordHero', 'WordTune',
+      'SmartCopy', 'CloserCopy', 'Writerzen', 'WriteSonic', 'Rytr me',
+      'CANVA pro', 'Crello', 'Envato Elements', 'Leonardo.AI', 'Freepik',
+      'Vecteezy', 'StoryBlocks', 'Designs ai', 'CAPCUT Pro', 'PicsArt',
+      'Fotojet', 'Invideo io', 'IconScout', 'Renderforest', 'GPL Themes/Plugins',
+      'Netflix', 'Prime Video', 'Chaupal tv', 'Indexification', 'Ecomhunt',
+      'Sell the trend', 'SaleHoo', 'Niche Scraper', 'Helium 10', 'Jungle Scout',
+      'Viral Launch', 'Semscoop', 'Buzzsumo', 'Buzzstream', 'Se Ranking',
+      'Picmonkey', 'Word Tracker', 'Epidemicsound', 'Slidebean', 'Motionarray',
+      'Prezi', 'Udemy', 'Skill Share', 'Turnitin', 'Linkedin Learning',
+      'Coursera', 'Scribd Premium'
+    ],
     popular: false
   },
   {
     name: 'LITE PLAN',
     price: '$10',
     period: '/month',
-    description: 'Lightweight solution for basic needs',
+    description: 'SEMRUSH Combo, 100+ Tools',
     icon: Star,
     color: 'text-blue-600',
     features: [
@@ -60,13 +108,19 @@ const plans = [
       'Basic features',
       'Perfect for individuals'
     ],
+    tools: [
+      'SEMRUSH Guru', 'MOZ Pro', 'Ubersuggest', 'Woorank', 'Grammarly',
+      'WordAi', 'Quillbot', 'Canva', 'Crello', 'Envato Elements',
+      'FotoJet', 'Invideo io', 'Netflix', 'Prime Video', 'Buzzsumo',
+      'Picmonkey', 'Motionarray', 'SkillShare', 'Turnitin', 'Linkedin Learning'
+    ],
     popular: false
   },
   {
     name: 'WRITER PLAN',
     price: '$15',
     period: '/month',
-    description: 'Specialized tools for content creators',
+    description: '30+ Tools',
     icon: Zap,
     color: 'text-orange-500',
     features: [
@@ -74,19 +128,33 @@ const plans = [
       'Content optimization',
       'Grammar and style checks'
     ],
+    tools: [
+      'ChatGPT 4', 'Bypass GPT', 'Grammarly', 'Quetext', 'WordAi',
+      'You Ai', 'Claude Ai', 'Hix Ai', 'Copymatic AI', 'Jasper Ai',
+      'Copy AI', 'Stealthwriter Ai', 'Jeeni Ai', 'SpinRewriter', 'Quillbot',
+      'WordHero', 'SmartCopy', 'WordTune', 'CloserCopy', 'Writerzen',
+      'Writesonic', 'Rytr me', 'Canva', 'Crello', 'WordTracker',
+      'Motionarray', 'Prezi', 'Turnitin', 'Coursera', 'Leonardo.AI'
+    ],
     popular: false
   },
   {
     name: 'DESIGNER PLAN',
     price: '$10',
     period: '/month',
-    description: 'Creative tools for designers and artists',
+    description: '15+ Tools',
     icon: Crown,
     color: 'text-purple-600',
     features: [
       'Design software access',
       'Creative assets',
       'Collaboration tools'
+    ],
+    tools: [
+      'Canva Pro', 'Crello', 'Envato Elements', 'Freepik', 'Vecteezy',
+      'Storyblocks', 'Videoblocks', 'Audioblocks', 'Designs AI', 'CAPCUT Pro',
+      'FotoJet', 'Invideo io', 'GPL Themes/Plugins', 'Leonardo.AI', 'Renderforest',
+      'IconScout'
     ],
     popular: false
   }
@@ -95,6 +163,27 @@ const plans = [
 export default function Pricing() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set())
+
+  const toggleFlip = (index: number) => {
+    setFlippedCards(prev => {
+      const newSet = new Set(prev)
+      if (newSet.has(index)) {
+        newSet.delete(index)
+      } else {
+        newSet.add(index)
+      }
+      return newSet
+    })
+  }
+
+  const handleMouseLeave = (index: number) => {
+    setFlippedCards(prev => {
+      const newSet = new Set(prev)
+      newSet.delete(index)
+      return newSet
+    })
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -162,98 +251,186 @@ export default function Pricing() {
 
         {/* Pricing Cards */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
           {plans.map((plan, index) => {
             const IconComponent = plan.icon
+            const isFlipped = flippedCards.has(index)
+            
             return (
               <motion.div
                 key={plan.name}
-                className={`relative p-8 h-full flex flex-col bg-white rounded-2xl border-4 border-black shadow-lg ${
-                  index === 0 ? 'transform -rotate-0.5 translate-y-4' : 
-                  index === 1 ? 'transform -translate-y-2' :
-                  index === 2 ? 'transform rotate-0.5 translate-y-4' : 
-                  ''
-                }`}
+                className="relative h-[500px] perspective-1000"
                 variants={cardVariants}
+                onMouseLeave={() => handleMouseLeave(index)}
                 whileHover={{ 
                   y: -5, 
                   scale: 1.02,
-                  shadow: "0 25px 50px rgba(0, 0, 0, 0.15)"
+                  transition: { duration: 0.2 }
                 }}
-                whileTap={{ scale: 0.98 }}
               >
                 {/* Popular Badge */}
                 {plan.popular && (
                   <motion.div 
-                    className="absolute -top-3 -right-3 bg-yellow-400 text-black font-bold px-4 py-2 rounded-lg rotate-12 text-sm border-2 border-black"
+                    className="absolute -top-3 -right-3 bg-red-500 text-white font-bold px-4 py-2 rounded-lg text-sm z-10"
                     initial={{ opacity: 0, y: -10 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
                     transition={{ delay: 0.6 + index * 0.2, duration: 0.5 }}
                   >
-                    Popular!
+                    Most Popular
                   </motion.div>
                 )}
 
-                {/* Plan Header */}
-                <div className="mb-6 text-center">
-                  <div className="w-16 h-16 rounded-full mb-6 flex items-center justify-center border-2 border-black mx-auto">
-                    <IconComponent className={`w-8 h-8 ${plan.color} stroke-2`} />
-                  </div>
-                  <h3 className="text-2xl font-bold text-black leading-snug mb-2">
-                    {plan.name}
-                  </h3>
-                  <p className="text-base text-gray-600 leading-relaxed font-medium">
-                    {plan.description}
-                  </p>
-                </div>
-
-                {/* Pricing */}
-                <div className="mb-6 text-center">
-                  <span className="text-4xl font-bold text-black">
-                    {plan.price}
-                  </span>
-                  <span className="text-lg text-gray-600 font-medium">
-                    {plan.period}
-                  </span>
-                </div>
-
-                {/* Features */}
-                <div className="mb-8 flex-grow">
-                  <div className="space-y-3">
-                    {plan.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-start gap-3">
-                        <span className="text-orange-500 font-bold text-lg leading-none mt-0.5">•</span>
-                        <span className="text-sm text-gray-700 leading-relaxed font-medium">
-                          {feature}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* CTA Button */}
-                <div className="mt-auto">
-                  <motion.a 
-                    href="https://members.seotoolsgroupbuy.us/signup"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`w-full h-12 font-bold text-base rounded-lg transition-all duration-300 flex items-center justify-center ${
-                      plan.popular
-                        ? 'bg-yellow-400 text-black hover:bg-yellow-300 border-2 border-black'
-                        : 'bg-white text-black hover:bg-gray-50 border-2 border-black'
-                    }`}
-                    whileHover={{ 
-                      scale: 1.05, 
-                      boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)"
-                    }}
-                    whileTap={{ scale: 0.95 }}
+                {/* Card Container */}
+                <div 
+                  className={`relative w-full h-full transition-transform duration-700 transform-style-preserve-3d ${
+                    isFlipped ? 'rotate-y-180' : ''
+                  }`}
+                  style={{ transformStyle: 'preserve-3d' }}
+                >
+                  {/* Front of Card */}
+                  <div 
+                    className="absolute inset-0 backface-hidden bg-white rounded-lg border border-gray-300 shadow-lg p-8 flex flex-col"
+                    style={{ backfaceVisibility: 'hidden' }}
                   >
-                    Order Now
-                  </motion.a>
+                    {/* Plan Header */}
+                    <div className="mb-6 text-center">
+                      <div className="w-16 h-16 rounded-full mb-6 flex items-center justify-center border-2 border-red-500 mx-auto">
+                        <IconComponent className={`w-8 h-8 ${plan.color} stroke-2`} />
+                      </div>
+                      <h3 className="text-2xl font-bold text-black leading-snug mb-2">
+                        {plan.name}
+                      </h3>
+                      <p className="text-base text-gray-600 leading-relaxed font-medium">
+                        {plan.description}
+                      </p>
+                    </div>
+
+                    {/* Pricing */}
+                    <div className="mb-6 text-center">
+                      <span className="text-4xl font-bold text-red-500">
+                        {plan.price}
+                      </span>
+                      <span className="text-lg text-gray-600 font-medium">
+                        {plan.period}
+                      </span>
+                    </div>
+
+                    {/* Plan Benefits */}
+                    <div className="mb-6 text-center">
+                      <div className="text-sm text-gray-600 space-y-1">
+                        {plan.name === 'SMALL PLAN' && (
+                          <>
+                            <p>✓ Complete SEO Suite</p>
+                            <p>✓ AI Writing Tools</p>
+                            <p>✓ Design & Graphics</p>
+                          </>
+                        )}
+                        {plan.name === 'AHREF$ COMBO' && (
+                          <>
+                            <p>✓ Premium SEO Tools</p>
+                            <p>✓ Advanced Analytics</p>
+                            <p>✓ Content Creation</p>
+                          </>
+                        )}
+                        {plan.name === 'MEGA PLAN' && (
+                          <>
+                            <p>✓ All Premium Tools</p>
+                            <p>✓ E-commerce Suite</p>
+                            <p>✓ Learning Platform</p>
+                          </>
+                        )}
+                        {plan.name === 'LITE PLAN' && (
+                          <>
+                            <p>✓ Essential SEO</p>
+                            <p>✓ Basic Design</p>
+                            <p>✓ Entertainment</p>
+                          </>
+                        )}
+                        {plan.name === 'WRITER PLAN' && (
+                          <>
+                            <p>✓ AI Writing Suite</p>
+                            <p>✓ Content Tools</p>
+                            <p>✓ Grammar Check</p>
+                          </>
+                        )}
+                        {plan.name === 'DESIGNER PLAN' && (
+                          <>
+                            <p>✓ Design Software</p>
+                            <p>✓ Stock Assets</p>
+                            <p>✓ Video Tools</p>
+                          </>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* View Included Tools Button */}
+                    <div className="mt-auto mb-4 text-center">
+                      <button
+                        onClick={() => toggleFlip(index)}
+                        className="text-red-500 hover:text-red-600 font-medium text-sm underline"
+                      >
+                        View included tools
+                      </button>
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className="text-center">
+                      <motion.a 
+                        href="https://members.seotoolsgroupbuy.us/signup"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`w-full h-12 font-bold text-base rounded-lg transition-all duration-300 flex items-center justify-center ${
+                          plan.popular
+                            ? 'bg-red-500 text-white hover:bg-red-600'
+                            : 'bg-white text-black hover:bg-gray-50 border-2 border-gray-300'
+                        }`}
+                        whileHover={{ 
+                          scale: 1.05, 
+                          boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)"
+                        }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        Get Instant Access
+                      </motion.a>
+                    </div>
+                  </div>
+
+                  {/* Back of Card */}
+                  <div 
+                    className="absolute inset-0 backface-hidden bg-white rounded-lg border border-gray-300 shadow-lg p-8 flex flex-col rotate-y-180"
+                    style={{ 
+                      backfaceVisibility: 'hidden',
+                      transform: 'rotateY(180deg)'
+                    }}
+                  >
+                    {/* Back Header */}
+                    <div className="mb-6 text-center">
+                      <div className="flex items-center justify-center mb-4">
+                        <span className="text-sm text-gray-500">← Hover out to return</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-black leading-snug">
+                        {plan.name} Tools
+                      </h3>
+                    </div>
+
+                    {/* Tools List */}
+                    <div className="flex-grow overflow-y-auto">
+                      <div className="grid grid-cols-2 gap-1 text-xs">
+                        {plan.tools.map((tool, toolIndex) => (
+                          <div key={toolIndex} className="flex items-center gap-1">
+                            <span className="text-red-500 font-bold text-xs">✓</span>
+                            <span className="text-xs text-gray-700 font-medium leading-tight">
+                              {tool}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             )
