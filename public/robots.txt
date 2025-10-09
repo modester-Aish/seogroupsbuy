@@ -1,0 +1,12 @@
+# robots.txt for SEOGroupsBuy
+
+# Allow all search engines
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://seogroupsbuy.com/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+

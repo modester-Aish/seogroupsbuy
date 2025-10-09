@@ -404,7 +404,8 @@ export default function Pricing() {
                     className="absolute inset-0 backface-hidden bg-white rounded-lg border border-gray-300 shadow-lg p-8 flex flex-col rotate-y-180"
                     style={{ 
                       backfaceVisibility: 'hidden',
-                      transform: 'rotateY(180deg)'
+                      transform: 'rotateY(180deg)',
+                      pointerEvents: isFlipped ? 'auto' : 'none'
                     }}
                   >
                     {/* Back Header */}
@@ -417,8 +418,35 @@ export default function Pricing() {
                       </h3>
                     </div>
 
-                    {/* Tools List */}
-                    <div className="flex-grow overflow-y-auto">
+                    {/* Tools List - Only scrollable when card is flipped */}
+                    <div 
+                      className="flex-grow overflow-y-auto overscroll-contain"
+                      onWheel={(e) => {
+                        // Only handle scroll when card is flipped
+                        if (!isFlipped) return
+                        
+                        const element = e.currentTarget
+                        const isScrollable = element.scrollHeight > element.clientHeight
+                        
+                        if (isScrollable) {
+                          const atTop = element.scrollTop === 0
+                          const atBottom = element.scrollTop + element.clientHeight >= element.scrollHeight - 1
+                          
+                          // Stop propagation to prevent page scroll
+                          if ((atTop && e.deltaY < 0) || (atBottom && e.deltaY > 0)) {
+                            // At boundary, allow page scroll
+                            return
+                          } else {
+                            // Inside scroll area, prevent page scroll
+                            e.stopPropagation()
+                          }
+                        }
+                      }}
+                      style={{
+                        scrollbarWidth: 'thin',
+                        scrollbarColor: '#d1d5db #f3f4f6'
+                      }}
+                    >
                       <div className="grid grid-cols-2 gap-1 text-xs">
                         {plan.tools.map((tool, toolIndex) => (
                           <div key={toolIndex} className="flex items-center gap-1">

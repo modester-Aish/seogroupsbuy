@@ -10,6 +10,28 @@ export default function Navbar() {
     setIsMenuOpen(!isMenuOpen)
   }
 
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault()
+    
+    // Check if we're on homepage
+    const isHomepage = window.location.pathname === '/'
+    
+    if (isHomepage) {
+      // If on homepage, smooth scroll to section
+      const element = document.getElementById(targetId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        // Keep URL clean without hash
+        window.history.replaceState(null, '', '/')
+      }
+    } else {
+      // If on different page, navigate to homepage first
+      // Use sessionStorage to remember which section to scroll to
+      sessionStorage.setItem('scrollToSection', targetId)
+      window.location.href = '/'
+    }
+  }
+
   return (
     <nav className="bg-background/95 backdrop-blur-sm border-b border-background-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -89,7 +111,8 @@ export default function Navbar() {
                 Home
               </a>
               <a
-                href="/#pricing"
+                href="#pricing"
+                onClick={(e) => handleSmoothScroll(e, 'pricing')}
                 className="text-text-600 hover:text-primary-500 px-3 py-2 text-sm font-medium transition-colors duration-200"
               >
                 Pricing
@@ -107,7 +130,8 @@ export default function Navbar() {
                 FAQ
               </a>
               <a
-                href="/#contact"
+                href="#contact"
+                onClick={(e) => handleSmoothScroll(e, 'contact')}
                 className="text-text-600 hover:text-primary-500 px-3 py-2 text-sm font-medium transition-colors duration-200"
               >
                 Contact
@@ -149,9 +173,12 @@ export default function Navbar() {
                 Home
               </a>
               <a
-                href="/#pricing"
+                href="#pricing"
                 className="text-text-600 hover:text-primary-500 block px-3 py-2 text-base font-medium"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => {
+                  handleSmoothScroll(e, 'pricing')
+                  setIsMenuOpen(false)
+                }}
               >
                 Pricing
               </a>
@@ -170,9 +197,12 @@ export default function Navbar() {
                 FAQ
               </a>
               <a
-                href="/#contact"
+                href="#contact"
                 className="text-text-600 hover:text-primary-500 block px-3 py-2 text-base font-medium"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => {
+                  handleSmoothScroll(e, 'contact')
+                  setIsMenuOpen(false)
+                }}
               >
                 Contact
               </a>
